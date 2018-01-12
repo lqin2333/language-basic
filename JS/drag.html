@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS Drag OOP version</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="drag.js"></script>
+		<!-- child of Drag (drag.js) -->
+		<script type="text/javascript" src="limited-drag.js"></script> 
+	</head>
+	<body>
+		<div id="normal-div">Normal</div>
+		<div id="limited-dragging-div">Limited</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Drag('normal-div');
+				new LimitedDrag('limited-dragging-div');
+			}
+		</script>
+	</body>
+
+</html>
