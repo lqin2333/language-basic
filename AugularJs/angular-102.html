@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="angular-102">
+<head>
+	<title>Angular 102</title>
+	<style>
+		
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module('angular-102', []);
+		app.controller('contro-http',function($scope, $http){
+			$http.get('sum.php',{
+				params:{a:12, b:5},
+				responseType:'json'
+			}).then(function(res){
+				var result = res.data;
+				alert(result + " " + (res.data+5));
+			}, function(){
+				alert("error");
+			})	
+		});
+	</script>
+</head>
+<body>
+	<div id="angular-ajax" ng-controller="contro-http">
+
+	</div>
+</body>
+</html>

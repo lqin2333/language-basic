@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="weibo">
+<head>
+	<title>Weibo</title>
+	<style>
+		
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module("weibo", []);
+		app.controller("contro-weibo", function($scope, $http){
+			$scope.replies= [
+				{id:1, content:'lol', time: 1472568347},
+				{id:2, content:'wow', time: 1472568347},
+				{id:3, content:'dota', time: 1472568347}
+			];
+		});
+
+	</script>
+</head>
+<body ng-controller="contro-weibo">
+	
+	<div ng-repeat="reply in replies">
+		<div>{{reply.content}}</div>
+		<div>{{reply.time*1000 | date:"yyyy-MM-dd HH:mm"}}</div>
+	</div>
+</body>
+</html>
