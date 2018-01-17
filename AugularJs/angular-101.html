@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="angular-101">
+<head>
+	<title>Angular 101</title>
+	<style>
+		#scrope-value, #scrope-items{border:1px solid black;margin-top:5px;}
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module('angular-101', []);
+
+		app.controller('controller1',function($scope){
+			$scope.a = 666;
+		})
+
+		app.controller('controller2',function($scope){
+			$scope.items = [
+				{name: 'T-shirt', price:49.99},
+				{name: 'Shoes', price:23.99}
+			];
+		});
+	</script>
+</head>
+<body>
+	<div id="really-really-basic">
+		<input type="text" ng-model="text1"/>
+		<div ng-bind="text1"></div>
+
+	</div>
+	<div id="scrope-value" ng-controller="controller1">
+		<span>{{a}}</span>
+	</div>
+	<div id="scrope-items" ng-controller="controller2">
+		<ul>
+			<li ng-repeat="item in items">
+				<h3>{{item.name}}</h3>
+				<span>{{item.price | currency }}</span>
+			</li>
+		</ul>
+	</div>
+	<div id="image-section" >
+		<input type="text" ng-model="src"/>
+		<img src="{{src}}" />
+		<img ng-src="src" />
+	</div>
+
+	<div id="hide-section" >
+		<input type="button" ng-click="hide = !hide" value="hide or show"/>
+		<div ng-hide="hide" style="width:100px; height: 50px; background: red;"></div>
+	</div>
+</body>
+</html>
