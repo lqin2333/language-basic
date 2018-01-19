@@ -1,22 +1,23 @@
 <?php
 
-class MessageBoard{
+include "MessageBoard.php";
+if(isset($_GET['act'])){$act = $_GET['act'];}
+if(isset($_GET['id'])){$id = $_GET['id'];}
+$result = 121;
 
-    public $id, $content, $createdTime, $numOfLike, $numberOfUnlike;
+$mb = new MessageBoard();
+if($act == "get_comment" && $id)
+{
+	$result = $mb->getCommentById($id);
+}
 
-    function __construct() {
-        $this->id = 6;
-
-    }
-
-    function printInfo(){
-        echo $this->id;
-
-    }
-
+if($act == "get_comments")
+{
+	$result = $mb->getComments();
 }
 
 
-$mb = new MessageBoard();
-$mb->printInfo();
+
+echo json_encode($result);
+
 ?>

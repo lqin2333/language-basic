@@ -9,12 +9,28 @@
 	<script type="text/javascript" src="angular.min.js"></script>
 	<script>
 		var app = angular.module("weibo", []);
-		app.controller("contro-weibo", function($scope, $http){
+		app.controller("contro-weibo-fake", function($scope, $http){
 			$scope.replies= [
 				{id:1, content:'lol', time: 1472568347},
 				{id:2, content:'wow', time: 1472568347},
 				{id:3, content:'dota', time: 1472568347}
 			];
+		});
+
+		app.controller("contro-weibo", function($scope, $http){
+			$scope.comments = [];
+			$http.get('weibo.php',{
+				params:{act:'get_comments'},
+				responseType:'json'
+			}).then(function(res){
+				var results = res.data;
+
+				console.log(results);
+			}, function(){
+				alert("errorr");
+			})	
+
+			
 		});
 
 	</script>
