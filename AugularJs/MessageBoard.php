@@ -5,7 +5,8 @@ class MessageBoard{
     public $id, $content, $createdTime, $numOfLike, $numberOfUnlike;
     private $db;
 
-    function __construct() {
+    function __construct() 
+    {
     	include 'DB.php';
         $this->db = new DB();
 
@@ -19,6 +20,16 @@ class MessageBoard{
     function getComments()
     {
     	return $this->db->getComments();
+    }
+
+    function like()
+    {
+
+    }
+
+    function dislike()
+    {
+
     }
 
 

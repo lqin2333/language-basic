@@ -2,6 +2,7 @@
 <html ng-app="weibo">
 <head>
 	<title>Weibo</title>
+	<meta charset="UTF-8">
 	<style>
 		
 	</style>
@@ -18,17 +19,28 @@
 		});
 
 		app.controller("contro-weibo", function($scope, $http){
+			
+			// page init
 			$scope.comments = [];
 			$http.get('weibo.php',{
 				params:{act:'get_comments'},
 				responseType:'json'
 			}).then(function(res){
 				var results = res.data;
-
-				console.log(results);
+				$scope.comments = results;
+				console.log($scope.comments);
 			}, function(){
 				alert("errorr");
-			})	
+			});
+			
+
+			$scope.likeIt = function(id){
+				alert(id);
+			}
+
+			$scope.dislikeIt = function(id){
+				alert(id);
+			}
 
 			
 		});
@@ -37,9 +49,23 @@
 </head>
 <body ng-controller="contro-weibo">
 	
-	<div ng-repeat="reply in replies">
+	<!-- <div ng-repeat="reply in replies">
 		<div>{{reply.content}}</div>
 		<div>{{reply.time*1000 | date:"yyyy-MM-dd HH:mm"}}</div>
+	</div> -->
+	<input type="button" ng-click="showComments()" value="显示一波"/>
+	<div ng-repeat="comment in comments">
+		<div class="comment-block" style="border:1px solid black; padding:10px;">
+			<div>{{comment.comment}}</div>
+			<div>{{comment.created_time}}</div>
+			<input type="button" value="like" ng-click="likeIt(comment.id)">
+			<span>{{comment.like_it}}</span>
+
+			<input type="button" value="dislike" ng-click="dislikeIt(comment.id)">
+			<span>{{comment.dislike_it}}</span>
+		</div>
+		
 	</div>
+
 </body>
 </html>
