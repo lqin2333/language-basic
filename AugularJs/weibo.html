@@ -30,7 +30,7 @@
 				$scope.comments = results;
 				console.log($scope.comments);
 			}, function(){
-				alert("errorr");
+				$scope.showError();
 			});
 			
 
@@ -43,6 +43,40 @@
 			}
 
 			
+
+			$scope.addNewComment = function()
+			{
+				if($scope.content != "")
+				{
+					var temp = {comment: $scope.content, 
+								created_time: new Date().toISOString().substring(0, 10), 
+								like_it: "0", 
+								dislike_it: "0"};
+					$scope.comments.push(temp);
+					$http.get('weibo.php',{
+						params:{act:'add', comment:$scope.content},
+						responseType:'json'
+					}).then(function(res){
+						var results = res.data;
+						console.log(results);
+					}, function(){
+						$scope.showError();
+					});
+				}
+				
+			}
+
+			$scope.show=function()
+			{
+				alert($scope.content);
+			}
+
+			$scope.showError=function()
+			{
+				alert('error');
+			}
+			
+			
 		});
 
 	</script>
@@ -54,13 +88,15 @@
 		<div>{{reply.time*1000 | date:"yyyy-MM-dd HH:mm"}}</div>
 	</div> -->
 	<input type="button" ng-click="showComments()" value="显示一波"/>
+	<br/>
+	<textarea rows="4" cols="50" ng-model="content"></textarea>
+	<input type="button" ng-click="addNewComment()" value="提交评论"/>
 	<div ng-repeat="comment in comments">
 		<div class="comment-block" style="border:1px solid black; padding:10px;">
 			<div>{{comment.comment}}</div>
 			<div>{{comment.created_time}}</div>
 			<input type="button" value="like" ng-click="likeIt(comment.id)">
 			<span>{{comment.like_it}}</span>
-
 			<input type="button" value="dislike" ng-click="dislikeIt(comment.id)">
 			<span>{{comment.dislike_it}}</span>
 		</div>

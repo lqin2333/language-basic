@@ -36,6 +36,16 @@ class DB{
 		return mysqli_fetch_all($result); 
 	}
 
+	function addComment($comment)
+	{
+		$sqlQuery = "INSERT INTO message_board (comment, created_time, like_it, dislike_it) VALUES ('".$comment."', '".date("Y-m-d")."', 0, 0)";
+		if ($this->conn->query($sqlQuery) === True) {
+		    return "successful";
+		} else {
+		    return "Error: " . $sqlQuery . "<br>" . $this->conn->error;
+		}
+	}
+
 }
 
 ?>

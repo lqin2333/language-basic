@@ -22,6 +22,11 @@ class MessageBoard{
     	return $this->db->getComments();
     }
 
+    function addComment($comment)
+    {
+    	return $this->db->addComment($comment);
+    }
+
     function like()
     {
 
