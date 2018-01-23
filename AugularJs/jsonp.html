@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="play-jsonp">
+<head>
+	<meta charset="utf-8">
+	<title>jsonp</title>
+	<style>
+		
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module('play-jsonp', []);
+
+
+
+
+		app.controller('jsonp-contro',function($scope, $http){
+			$scope.arr = [];
+			$scope.str = ''; 
+			var url = "http://suggestion.baidu.com/su?wd="+$scope.str+"&callback=JSON_CALLBACK";
+			$scope.$watch('str', function (){
+				$http.jsonp(url).then(function(res){
+					alert(res.s);
+				}, function(){
+					alert("error");
+				})
+			});
+
+
+
+			
+		});
+
+		
+	</script>
+</head>
+<body>
+
+<div ng-controller="jsonp-contro">
+	<input type="text" ng-model="str">
+	<div ng-repeat="a in arr">{{a}}</div>
+</div>
+
+</body>
+</html>
