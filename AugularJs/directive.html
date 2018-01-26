@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="directive">
+<head>
+	<title>Directive</title>
+	<style>
+		
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module('directive', []);
+		app.controller('dropdownlist-contro',function($scope){
+			$scope.values = ['app','iopasje', 'asdxciode', 'opboemc'];
+		});
+		app.directive('dropdownlist', function(){
+			return {
+				restrict: 'E',
+				template: 
+				'<input type="text" ng-model="str">\
+				<ul>\
+					<li ng-repeat="v in values" ng-show="v.indexOf(str) != -1">{{v}}</li>\
+				</ul>',
+				transclude: true
+
+			}
+		});
+	</script>
+</head>
+<body>
+<div ng-controller="dropdownlist-contro">
+	<dropdownlist></dropdownlist>
+</div>
+
+
+</body>
+</html>
