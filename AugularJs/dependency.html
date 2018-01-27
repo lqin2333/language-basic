@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="dependency">
+<head>
+	<title>Dependency</title>
+	<style>
+		
+	</style>
+	<!-- angular 1.6.7 --> 
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script>
+		var app = angular.module('dependency', []);
+		app.factory('depOne', function(){
+			return {
+				a : 12,
+				b: 5
+			}
+
+		});
+
+		app.decorator('depOne', function($delegate){
+			$delegate.c = 33;
+			return $delegate;
+
+		});
+
+		app.controller('dep-controller', function(depOne){
+			console.log(depOne);
+		})
+	</script>
+</head>
+<body>
+<div ng-controller="dep-controller"></div>
+</body>
+</html>
