@@ -17,6 +17,7 @@
 
 		});
 
+		//decorator: modify original depOne
 		app.decorator('depOne', function($delegate){
 			$delegate.c = 33;
 			return $delegate;
