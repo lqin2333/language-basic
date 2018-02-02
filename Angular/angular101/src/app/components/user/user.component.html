@@ -1,0 +1,50 @@
+<h1>Info Two Way Data Binding</h1>
+<p>
+  Hello, {{name}}!
+  <br>
+  {{age}}
+  <br>
+  {{address.street}}
+  <br>
+  {{address.city}}
+  <br>
+  {{address.state}}
+</p>
+
+<button (click)="toggleEdit()" #addHobbyButton>Add Hobby</button>
+
+
+<button (click) = "onClick()"> click me</button>
+<br>
+<br>
+<br>
+<div *ngIf="isEdit"> 
+  <label>Hobby:</label>
+  <input type="text" #hobby>
+</div>
+<button (click) = "addHobby(hobby.value)"> Add Hobby </button>
+
+<h2>Hobbies</h2>
+<ul>
+	<li *ngFor = "let hobby of hobbies; let i = index">{{i+1}} : {{hobby}} 
+    <button (click) = "deleteHobby(hobby)">x</button>
+  </li>
+</ul>
+
+<div>
+  <input type="text" [(ngModel)]="name" name="name"><br>
+  <input type="text" [(ngModel)]="age" name="age"><br>
+  <input type="text" [(ngModel)]="address.street" name="street">
+</div>
+
+
+
+<h1>http module</h1>
+<h2>Posts</h2>
+<ul>
+  <li *ngFor="let post of posts">
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}</p>
+  </li>
+
+</ul>
