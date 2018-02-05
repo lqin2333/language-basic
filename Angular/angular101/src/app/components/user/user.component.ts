@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from '../../services/data.service';
 
+//decorator
 @Component({
-  selector: 'app-user',
+  selector: 'app-user', // tag for outlet using
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
