@@ -26,11 +26,10 @@ export class HeroesComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.create(name)
-      .then(hero => {
-        this.heroes.push(hero);
-        this.selectedHero = null;
-      });
+	
+
+	this.heroes.push({id: 3;name: 'abc';});
+
   }
 
   delete(hero: Hero): void {
