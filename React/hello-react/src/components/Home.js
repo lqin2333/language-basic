@@ -7,7 +7,8 @@ export default class Home extends Component{
     constructor(props){
         super(props);
         this.state={
-            age: props.iAge
+            age: props.iAge,
+            theeValue: 1024
         }
         
     }
@@ -25,9 +26,21 @@ export default class Home extends Component{
         this.props.greet(this.state.age);
     }
 
+    onChangee(event){
+        this.setState({theeValue: event.target.value});
+        console.log(event.target.value);
+        this.props.passToHeader(event.target.value)
+    }
+    
+    passToHeaderMethod(){
+        let theInputTxt = document.getElementById('theInputTxt');
 
+        this.props.passToHeader( parseInt(theInputTxt.value) + 1);
+    }
+    
 
     render(){
+        var theStyle ={border:'1px solid red'}
         let content = "";
         if(true){
             content = "I am the content";
@@ -35,7 +48,7 @@ export default class Home extends Component{
         console.log('render');
         
         return(
-            <div className="container">
+            <div className="container" style={theStyle}>
                 <div className="row">
                     <div className="col-xs-1 col-xs-offset-11">
                         <h1>Home</h1>
@@ -57,6 +70,9 @@ export default class Home extends Component{
                         <button onClick={() => {this.increaseAge()}} className="btn btn-primary">This is a button</button>
                         <hr />
                         <button onClick={() => {this.props.greet(this.state.age);}}  className="btn btn-primary">This is aa button</button>
+                        <hr />
+                        <input id="theInputTxt" type="text" onChange={(event) => {this.onChangee(event)}} defaultValue ={this.state.theeValue}/>
+                        <button onClick={() => {this.passToHeaderMethod()}}  className="btn btn-primary">Pass to Header</button>
                     </div>
                     
                     {/*嵌入在父组件里的Home作为child */}
