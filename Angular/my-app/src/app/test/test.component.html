@@ -1,0 +1,26 @@
+<div>
+  test works!
+
+  <h2 class="{{thisClassName}}">this is heading 1</h2>
+  <h2 [class.test-color2]="blueOrNot">this is heading 2</h2>
+  <h2 bind-class="theClasses">this is heading 3</h2>
+  <h2 bind-ngClass="theClasses4">this is heading 4</h2>
+  <h2 [ngClass]="theClasses5">this is heading 5</h2>
+  <h2 [style.color]="isRed ? 'red' : 'black'">Is Red?</h2>
+  <h2 [style.color]="theOrangeColor">The Orange Color</h2>
+  <h2 bind-ngStyle="theStyles">The Styles</h2>
+  <input type="text" bind-disabled="disabledd" value="dadf">
+  <br/>
+  <button (click)="onClick()">yo click</button>
+  <button (click)="message2='wtf'">wtf click</button>
+  <button (click)="onClickEvent($event)">Event click</button>
+  <br/>
+  <input type="text" #myValue value="dadf">
+  <button (click)="log(myValue.value)">Log</button>
+  {{message}}
+  <br/>
+  {{message2}}
+
+
+  <app-test2 (outputValueToTest)="msgReceiver($event)" [valueReceived]="valueToChild"></app-test2>
+</div>

@@ -1,0 +1,8 @@
+<h2>
+  Lesson 3</h2>
+{{errorMsg}}
+<div *ngFor="let record of records">
+  <div (click)="onSelect(record)"  class="single-record" [class.selected]="isSelected(record)">
+    {{record.id}} -- {{record.title}} -- {{record.date}} -- {{record.amount}}
+  </div>
+</div>

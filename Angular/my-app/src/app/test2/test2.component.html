@@ -1,0 +1,35 @@
+<div>
+  <h2>Lesson 2</h2>
+  <input type="text" [(ngModel)]="abc" />
+  <div *ngIf="true">{{abc}}</div>
+
+
+  <div *ngIf="whichRef; then thisIsReference1; else thisIsReference2"></div>
+  <ng-template #thisIsReference1>
+    This Is Reference 1
+  </ng-template>
+  <ng-template #thisIsReference2>
+    This Is Reference 2
+  </ng-template>
+
+
+  <div [ngSwitch]="swichCase">
+    <div *ngSwitchCase="1">Value 1</div>
+    <div *ngSwitchCase="2">Value 2</div>
+    <div *ngSwitchCase="'three'">Value three -- not friendly to type anyway</div>
+    <div *ngSwitchDefault>Value Default</div>
+  </div>
+
+  <div *ngFor="let listValue of listValues; index as i">
+    {{i}} -- {{listValue}}
+  </div>
+  <br>
+  {{anotherNameOfValueReceived}}
+  <br>
+  <input type="text" [(ngModel)]="messageToTest1">
+  
+  <button (click)="fireEvent(messageToTest1)">Fire Event</button>
+  <br>
+  {{ 123.45 | currency}}
+
+</div>
