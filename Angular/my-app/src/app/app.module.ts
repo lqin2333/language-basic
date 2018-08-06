@@ -12,23 +12,35 @@ import { TestComponent } from './test/test.component';
 import { Test2Component } from './test2/test2.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MyFormComponent } from './my-form/my-form.component';
+import { MyTableComponent } from './components/my-table/my-table.component';
+
+import { MatTableModule } from '@angular/material';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TestComponent,
-    Test2Component,
-    MyFormComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [RecordsService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TestComponent,
+        Test2Component,
+        MyFormComponent,
+        MyTableComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserModule,
+
+        FormsModule,
+
+        HttpClientModule,
+        AppRoutingModule,
+
+        MatTableModule
+    ],
+    providers: [RecordsService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

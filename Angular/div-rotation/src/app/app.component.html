@@ -1,0 +1,8 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="rotation-container">
+    <div class="rotation-circle" [style.transform]="'rotate('+degree+'deg)'" (mousemove)="coordinates($event)" (mousedown)="startRotating = true;coordinates($event);"
+        (mouseup)="startRotating = false">
+
+    </div>
+    <input class="rotation-label" value="0">
+</div>

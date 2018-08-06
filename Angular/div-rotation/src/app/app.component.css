@@ -1,0 +1,26 @@
+.rotation-container{
+    top: 30px;
+    left: 50px;
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.rotation-circle{
+    border: 23px solid rgb(160, 56, 56);
+    border-radius: 50%;
+    border-top: 23px solid rgba(100,100,100,0.4);
+    width: 80px;
+    height: 80px;
+}
+
+.rotation-label{
+    text-align: center;
+    position: absolute;
+    top: 37%;
+    left: 31%;
+    width: 40px;
+}
+
+
+
